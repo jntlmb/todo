@@ -15,65 +15,81 @@
             class="bg-slate-800 col-start-1 col-end-3 row-start-1 row-end-10 p-5"
         >
             <div
-                class="flex text-white text-4xl pb-5 gap-1 border-b-[1px] border-slate-700"
+                class="flex justify-center md:justify-start text-white text-4xl pb-5 gap-1 border-b-[1px] border-slate-700"
             >
                 <i class="bi bi-check-all mt-[0.2rem]"></i>
-                <h1>dome</h1>
+                <h1 class="hidden md:block">dome</h1>
             </div>
             <section class="py-5 text-white">
                 <ul class="flex flex-col gap-2">
-                    <li
-                        class="w-full text-md transition duration-150 text-center p-3 border-[1px] border-gray-400 bg-gray-500 rounded-md hover:bg-gray-600"
-                    >
-                        <i class="bi bi-plus-circle"></i>
-                        <button>Add Todo</button>
+                    <li>
+                        <button
+                            class="w-full text-md transition duration-150 text-center p-3 border-[1px] border-gray-400 bg-gray-500 rounded-md hover:bg-gray-600 flex justify-center gap-1"
+                        >
+                            <i class="bi bi-plus-circle"></i>
+                            <span class="hidden md:block">Add Todo</span>
+                        </button>
                     </li>
-                    <li
-                        class="w-full p-3 rounded-md bg-slate-700 transition duration-150"
-                    >
-                        <i class="bi bi-person-circle"></i>
-                        <button class="pl-1">My Todos</button>
+                    <li>
+                        <button
+                            class="w-full text-md transition duration-150 p-3 rounded-md bg-gray-700 hover:bg-gray-600 flex gap-2 justify-center md:justify-start"
+                        >
+                            <i class="bi bi-person-circle"></i>
+                            <span class="hidden md:block">My Todos</span>
+                        </button>
                     </li>
-                    <li
-                        class="w-full p-3 rounded-md hover:bg-slate-700 transition duration-150"
-                    >
-                        <i class="bi bi-calendar-event"></i>
-                        <button class="pl-1">Today</button>
+                    <li>
+                        <button
+                            class="w-full text-md transition duration-150 p-3 rounded-md hover:bg-gray-600 flex gap-2 justify-center md:justify-start"
+                        >
+                            <i class="bi bi-calendar-event"></i>
+                            <span class="hidden md:block">Today</span>
+                        </button>
                     </li>
-                    <li
-                        class="w-full p-3 rounded-md hover:bg-slate-700 transition duration-150"
-                    >
-                        <i class="bi bi-calendar-week"></i>
-                        <button class="pl-1">Upcoming</button>
+                    <li>
+                        <button
+                            class="w-full text-md transition duration-150 p-3 rounded-md hover:bg-gray-600 flex gap-2 justify-center md:justify-start"
+                        >
+                            <i class="bi bi-calendar-week"></i>
+                            <span class="hidden md:block">Upcoming</span>
+                        </button>
                     </li>
-                    <li
-                        class="w-full p-3 rounded-md hover:bg-slate-700 transition duration-150"
-                    >
-                        <i class="bi bi-alarm"></i>
-                        <button class="pl-1">Anytime</button>
+                    <li>
+                        <button
+                            class="w-full text-md transition duration-150 p-3 rounded-md hover:bg-gray-600 flex gap-2 justify-center md:justify-start"
+                        >
+                            <i class="bi bi-alarm"></i>
+                            <span class="hidden md:block">Anytime</span>
+                        </button>
                     </li>
-                    <li
-                        class="w-full p-3 rounded-md hover:bg-slate-700 transition duration-150"
-                    >
-                        <i class="bi bi-list-stars"></i>
-                        <button class="pl-1">Priority</button>
+                    <li>
+                        <button
+                            class="w-full text-md transition duration-150 p-3 rounded-md hover:bg-gray-600 flex gap-2 justify-center md:justify-start"
+                        >
+                            <i class="bi bi-list-stars"></i>
+                            <span class="hidden md:block">Priority</span>
+                        </button>
                     </li>
                 </ul>
             </section>
             <hr class="h-[1px] border-slate-700" />
             <section class="py-5 text-white">
                 <ul class="flex flex-col gap-2">
-                    <li
-                        class="w-full text-md text-center p-3 border-[1px] border-gray-400 bg-gray-500 rounded-md hover:bg-gray-600 transition duration-150"
-                    >
-                        <i class="bi bi-plus-circle"></i>
-                        <button>Add Project</button>
+                    <li>
+                        <button
+                            class="w-full text-md transition duration-150 text-center p-3 border-[1px] border-gray-400 bg-gray-500 rounded-md hover:bg-gray-600 flex justify-center gap-1"
+                        >
+                            <i class="bi bi-plus-circle"></i>
+                            <span class="hidden md:block">Add Project</span>
+                        </button>
                     </li>
-                    <li
-                        class="w-full p-3 rounded-md hover:bg-slate-700 transition duration-150"
-                    >
-                        <i class="bi bi-archive"></i>
-                        <button class="pl-1">My Projects</button>
+                    <li>
+                        <button
+                            class="w-full text-md transition duration-150 p-3 rounded-md hover:bg-gray-600 flex gap-2 justify-center md:justify-start"
+                        >
+                            <i class="bi bi-archive"></i>
+                            <span class="hidden md:block">My Projects</span>
+                        </button>
                     </li>
                 </ul>
             </section>
