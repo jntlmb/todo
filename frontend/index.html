@@ -10,101 +10,125 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
         />
     </head>
-    <body class="min-h-screen grid grid-cols-9 grid-rows-9">
+    <body class="grid min-h-screen grid-cols-9 grid-rows-9">
         <nav
-            class="bg-slate-800 col-start-1 col-end-3 row-start-1 row-end-10 p-5"
+            class="col-start-1 col-end-3 row-start-1 p-5 bg-slate-800 row-end-10"
         >
-            <div
-                class="flex justify-center md:justify-start text-white text-4xl pb-5 gap-1 border-b-[1px] border-slate-700"
-            >
-                <i class="bi bi-check-all mt-[0.2rem]"></i>
-                <h1 class="hidden md:block">dome</h1>
+            <div class="">
+                <div
+                    class="flex justify-center md:justify-start text-white text-4xl pb-5 gap-1 border-b-[1px] border-slate-700"
+                >
+                    <i class="bi bi-check-all mt-[0.2rem]"></i>
+                    <h1 class="hidden md:block">dome</h1>
+                </div>
+                <section class="py-5 text-white">
+                    <ul class="flex flex-col gap-2">
+                        <li>
+                            <button
+                                class="w-full text-md transition duration-150 text-center p-3 border-[1px] border-gray-400 bg-gray-500 rounded-md hover:bg-gray-600 flex justify-center gap-1"
+                            >
+                                <i
+                                    class="text-2xl md:text-base bi bi-plus-circle"
+                                ></i>
+                                <span class="hidden md:block">Add Todo</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                class="flex justify-center w-full gap-2 p-3 transition duration-150 bg-gray-700 rounded-md text-md hover:bg-gray-600 md:justify-start"
+                            >
+                                <i
+                                    class="text-2xl bi md:text-base bi-person-circle"
+                                ></i>
+                                <span class="hidden md:block">My Todos</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md text-md hover:bg-gray-600 md:justify-start"
+                            >
+                                <i
+                                    class="text-2xl bi md:text-base bi-calendar-event"
+                                ></i>
+                                <span class="hidden md:block">Today</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md text-md hover:bg-gray-600 md:justify-start"
+                            >
+                                <i
+                                    class="text-2xl bi bi-calendar-week md:text-base"
+                                ></i>
+                                <span class="hidden md:block">Upcoming</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md text-md hover:bg-gray-600 md:justify-start"
+                            >
+                                <i
+                                    class="text-2xl bi bi-alarm md:text-base"
+                                ></i>
+                                <span class="hidden md:block">Anytime</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md text-md hover:bg-gray-600 md:justify-start"
+                            >
+                                <i
+                                    class="text-2xl bi bi-list-stars md:text-base"
+                                ></i>
+                                <span class="hidden md:block">Priority</span>
+                            </button>
+                        </li>
+                    </ul>
+                </section>
+                <hr class="h-[1px] border-slate-700" />
+                <section class="py-5 text-white">
+                    <ul class="flex flex-col gap-2">
+                        <li>
+                            <button
+                                class="w-full text-md transition duration-150 text-center p-3 border-[1px] border-gray-400 bg-gray-500 rounded-md hover:bg-gray-600 flex justify-center gap-1"
+                            >
+                                <i
+                                    class="text-2xl md:text-base bi bi-plus-circle"
+                                ></i>
+                                <span class="hidden md:block">Add Project</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md text-nowrap text-md hover:bg-gray-600 md:justify-start"
+                            >
+                                <i
+                                    class="text-2xl bi bi-archive md:text-base"
+                                ></i>
+                                <span class="hidden md:block">My Projects</span>
+                            </button>
+                        </li>
+                    </ul>
+                </section>
             </div>
-            <section class="py-5 text-white">
-                <ul class="flex flex-col gap-2">
-                    <li>
-                        <button
-                            class="w-full text-md transition duration-150 text-center p-3 border-[1px] border-gray-400 bg-gray-500 rounded-md hover:bg-gray-600 flex justify-center gap-1"
-                        >
-                            <i class="bi bi-plus-circle"></i>
-                            <span class="hidden md:block">Add Todo</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            class="w-full text-md transition duration-150 p-3 rounded-md bg-gray-700 hover:bg-gray-600 flex gap-2 justify-center md:justify-start"
-                        >
-                            <i class="bi bi-person-circle"></i>
-                            <span class="hidden md:block">My Todos</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            class="w-full text-md transition duration-150 p-3 rounded-md hover:bg-gray-600 flex gap-2 justify-center md:justify-start"
-                        >
-                            <i class="bi bi-calendar-event"></i>
-                            <span class="hidden md:block">Today</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            class="w-full text-md transition duration-150 p-3 rounded-md hover:bg-gray-600 flex gap-2 justify-center md:justify-start"
-                        >
-                            <i class="bi bi-calendar-week"></i>
-                            <span class="hidden md:block">Upcoming</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            class="w-full text-md transition duration-150 p-3 rounded-md hover:bg-gray-600 flex gap-2 justify-center md:justify-start"
-                        >
-                            <i class="bi bi-alarm"></i>
-                            <span class="hidden md:block">Anytime</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            class="w-full text-md transition duration-150 p-3 rounded-md hover:bg-gray-600 flex gap-2 justify-center md:justify-start"
-                        >
-                            <i class="bi bi-list-stars"></i>
-                            <span class="hidden md:block">Priority</span>
-                        </button>
-                    </li>
-                </ul>
-            </section>
-            <hr class="h-[1px] border-slate-700" />
-            <section class="py-5 text-white">
-                <ul class="flex flex-col gap-2">
-                    <li>
-                        <button
-                            class="w-full text-md transition duration-150 text-center p-3 border-[1px] border-gray-400 bg-gray-500 rounded-md hover:bg-gray-600 flex justify-center gap-1"
-                        >
-                            <i class="bi bi-plus-circle"></i>
-                            <span class="hidden md:block">Add Project</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            class="w-full text-md transition duration-150 p-3 rounded-md hover:bg-gray-600 flex gap-2 justify-center md:justify-start"
-                        >
-                            <i class="bi bi-archive"></i>
-                            <span class="hidden md:block">My Projects</span>
-                        </button>
-                    </li>
-                </ul>
-            </section>
         </nav>
         <main
-            class="col-start-3 col-end-10 row-start-1 row-end-10 grid grid-rows-12 bg-gray-300"
+            class="grid col-start-3 col-end-10 row-start-1 bg-gray-300 row-end-10 grid-rows-12"
         >
             <div
-                class="row-start-1 row-end-1 shadow-xl flex px-5 gap-4 text-xl items-center"
+                class="flex items-center row-start-1 row-end-1 gap-4 px-5 text-2xl shadow-xl"
             >
                 <p class="text-gray-400">dome</p>
                 <p class="text-gray-700">/</p>
                 <p class="text-gray-700">My Todos</p>
             </div>
-            <div class="row-start-2 row-end-13"></div>
+            <div class="flex items-center row-start-2 row-end-2 px-4">
+                <h2 class="text-5xl font-semibold">My Todos</h2>
+            </div>
+            <div
+                id="content-container"
+                class="row-start-3 gap-2 p-4 row-end-13"
+            ></div>
         </main>
         <!--    Script      -->
         <script type="module" src="src/main.js"></script>

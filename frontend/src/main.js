@@ -1,12 +1,30 @@
 import "./input.css";
 
 import { Todo } from "./js/modules/Todo";
-import { Project } from "./js/modules/Project";
+import { DomHandler } from "./js/modules/DomHandler";
 
-const myTodos = [];
+const allTodos = [];
 
-const firstTodo = new Todo("finish homework", "math, englisch", "12.03", "3");
-const secondTodo = new Todo("go to gym", "push day", "12.03", "1");
+const domHandler = new DomHandler();
 
-myTodos.push(firstTodo);
-myTodos.push(secondTodo);
+const firstTestTodo = new Todo("test titel", "test description", "12.01", "2");
+const secondTestTodo = new Todo("code", "finish todo list", "24.09", "1");
+const thirdTestTodo = new Todo("code", "finish todo list", "24.09", "1");
+const fourthTestTodo = new Todo("code", "finish todo list", "24.09", "1");
+const sixthTestTodo = new Todo("code", "finish todo list", "24.09", "1");
+const seventhTestTodo = new Todo("code", "finish todo list", "24.09", "1");
+const eigthTestTodo = new Todo("code", "finish todo list", "24.09", "1");
+const ninethTestTodo = new Todo("code", "finish todo list", "24.09", "1");
+const tenthTestTodo = new Todo("code", "finish todo list", "24.09", "1");
+
+allTodos.push(firstTestTodo);
+allTodos.push(secondTestTodo);
+allTodos.push(thirdTestTodo);
+allTodos.push(fourthTestTodo);
+allTodos.push(sixthTestTodo);
+allTodos.push(seventhTestTodo);
+allTodos.push(eigthTestTodo);
+allTodos.push(ninethTestTodo);
+allTodos.push(tenthTestTodo);
+
+domHandler.printAllTodos(allTodos);
