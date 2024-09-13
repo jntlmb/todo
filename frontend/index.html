@@ -10,10 +10,8 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
         />
     </head>
-    <body class="grid min-h-screen grid-cols-9 grid-rows-9">
-        <nav
-            class="col-start-1 col-end-3 row-start-1 p-5 bg-slate-800 row-end-10"
-        >
+    <body class="grid h-screen grid-cols-9 overflow-hidden grid-rows-9">
+        <nav class="col-span-2 p-5 row-span-full bg-slate-800 row-end-10">
             <div class="">
                 <div
                     class="flex justify-center md:justify-start text-white text-4xl pb-5 gap-1 border-b-[1px] border-slate-700"
@@ -25,7 +23,8 @@
                     <ul class="flex flex-col gap-2">
                         <li>
                             <button
-                                class="w-full text-md transition duration-150 text-center p-3 border-[1px] border-gray-400 bg-gray-500 rounded-md hover:bg-gray-600 flex justify-center gap-1"
+                                class="nav-btn w-full text-md data-modal transition duration-150 text-center p-3 border-[1px] border-gray-400 bg-gray-500 rounded-md hover:bg-gray-600 flex justify-center gap-1"
+                                data-action="add-todo"
                             >
                                 <i
                                     class="text-2xl md:text-base bi bi-plus-circle"
@@ -35,7 +34,8 @@
                         </li>
                         <li>
                             <button
-                                class="flex justify-center w-full gap-2 p-3 transition duration-150 bg-gray-700 rounded-md text-md hover:bg-gray-600 md:justify-start"
+                                class="flex justify-center w-full gap-2 p-3 transition duration-150 bg-gray-700 rounded-md nav-btn text-md hover:bg-gray-600 md:justify-start"
+                                data-action="my-todos"
                             >
                                 <i
                                     class="text-2xl bi md:text-base bi-person-circle"
@@ -45,7 +45,8 @@
                         </li>
                         <li>
                             <button
-                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md text-md hover:bg-gray-600 md:justify-start"
+                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md nav-btn text-md hover:bg-gray-600 md:justify-start"
+                                data-action="today"
                             >
                                 <i
                                     class="text-2xl bi md:text-base bi-calendar-event"
@@ -55,7 +56,8 @@
                         </li>
                         <li>
                             <button
-                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md text-md hover:bg-gray-600 md:justify-start"
+                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md nav-btn text-md hover:bg-gray-600 md:justify-start"
+                                data-action="upcoming"
                             >
                                 <i
                                     class="text-2xl bi bi-calendar-week md:text-base"
@@ -65,7 +67,8 @@
                         </li>
                         <li>
                             <button
-                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md text-md hover:bg-gray-600 md:justify-start"
+                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md nav-btn text-md hover:bg-gray-600 md:justify-start"
+                                data-action="anytime"
                             >
                                 <i
                                     class="text-2xl bi bi-alarm md:text-base"
@@ -75,12 +78,13 @@
                         </li>
                         <li>
                             <button
-                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md text-md hover:bg-gray-600 md:justify-start"
+                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md nav-btn text-md hover:bg-gray-600 md:justify-start"
+                                data-action="importance"
                             >
                                 <i
                                     class="text-2xl bi bi-list-stars md:text-base"
                                 ></i>
-                                <span class="hidden md:block">Priority</span>
+                                <span class="hidden md:block">Importance</span>
                             </button>
                         </li>
                     </ul>
@@ -90,7 +94,8 @@
                     <ul class="flex flex-col gap-2">
                         <li>
                             <button
-                                class="w-full text-md transition duration-150 text-center p-3 border-[1px] border-gray-400 bg-gray-500 rounded-md hover:bg-gray-600 flex justify-center gap-1"
+                                class="nav-btn w-full text-md transition duration-150 text-center p-3 border-[1px] border-gray-400 bg-gray-500 rounded-md hover:bg-gray-600 flex justify-center gap-1"
+                                data-action="add-project"
                             >
                                 <i
                                     class="text-2xl md:text-base bi bi-plus-circle"
@@ -100,7 +105,8 @@
                         </li>
                         <li>
                             <button
-                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md text-nowrap text-md hover:bg-gray-600 md:justify-start"
+                                class="flex justify-center w-full gap-2 p-3 transition duration-150 rounded-md nav-btn text-nowrap text-md hover:bg-gray-600 md:justify-start"
+                                data-action="my-projects"
                             >
                                 <i
                                     class="text-2xl bi bi-archive md:text-base"
@@ -112,25 +118,25 @@
                 </section>
             </div>
         </nav>
-        <main
-            class="grid col-start-3 col-end-10 row-start-1 bg-gray-300 row-end-10 grid-rows-12"
-        >
-            <div
-                class="flex items-center row-start-1 row-end-1 gap-4 px-5 text-2xl shadow-xl"
-            >
-                <p class="text-gray-400">dome</p>
-                <p class="text-gray-700">/</p>
-                <p class="text-gray-700">My Todos</p>
-            </div>
-            <div class="flex items-center row-start-2 row-end-2 px-4">
-                <h2 class="text-5xl font-semibold">My Todos</h2>
-            </div>
+        <!--     Add Todo Modal (may rendered dynamically      -->
+        <div id="modal-container"></div>
+        <main class="flex flex-col col-span-7 overflow-hidden row-span-full">
+            <header class="shadow-md">
+                <div class="flex items-center gap-4 p-5 text-2xl">
+                    <p class="text-gray-400">dome</p>
+                    <p class="text-gray-700">/</p>
+                    <p class="text-gray-700">My Todos</p>
+                </div>
+                <div class="items-center hidden p-4 md:block">
+                    <h2 class="text-5xl font-semibold">My Todos</h2>
+                </div>
+            </header>
             <div
                 id="content-container"
-                class="row-start-3 gap-2 p-4 row-end-13"
+                class="flex-grow gap-2 p-4 overflow-y-auto"
             ></div>
         </main>
         <!--    Script      -->
-        <script type="module" src="src/main.js"></script>
+        <script type="module" src="src/js/main.js"></script>
     </body>
 </html>
