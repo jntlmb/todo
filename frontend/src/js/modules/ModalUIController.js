@@ -2,16 +2,19 @@ import { createTodoModal } from "./templates/todoModalTemplate";
 import { setupModalEventListener } from "./eventListeners/modalEventListener";
 
 export class ModalUIController {
-    displayTodoModal() {
-        const modalContainer = document.getElementById("modal-container");
+    constructor () {
+        this.modalContainer = document.getElementById("modal-container");
+    }
+
+    displayTodoModal(todos) {
+        
         createTodoModal();
-        modalContainer.classList.remove("hidden"); // Modal sichtbar machen
-        setupModalEventListener();
+        this.modalContainer.classList.remove("hidden");
+        setupModalEventListener(todos);
     }
 
     hideTodoModal() {
-        const modalContainer = document.getElementById("modal-container");
-        modalContainer.classList.add("hidden"); // Modal verstecken
+        this.modalContainer.classList.add("hidden");
     }
 
     displayProjectModal() {

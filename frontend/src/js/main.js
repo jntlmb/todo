@@ -1,26 +1,13 @@
 import "../input.css";
 
 import { setupNavEventListener } from "./modules/eventListeners/navEventListener";
+import { ModalUIController } from "./modules/ModalUIController";
 import { Todo } from "./modules/Todo";
 import { TodoUIController } from "./modules/TodoUIController";
 
 const todos = [];
+const modalUIController = new ModalUIController();
+const todoUIController = new TodoUIController();
 
-const firstTestTodo = new Todo({
-    title: "add 'add todo'-modal",
-    description: "modal to enter todo-data",
-    dueDate: "11.09.24",
-    importance: "1"
-});
+setupNavEventListener(todos, modalUIController, todoUIController);
 
-const secondTestTodo = new Todo({
-    title: "test title two",
-    description: "test description",
-    dueDate: "20.04.13",
-    importance: "3"
-});
-
-todos.push(firstTestTodo);
-todos.push(secondTestTodo);
-
-setupNavEventListener(todos);

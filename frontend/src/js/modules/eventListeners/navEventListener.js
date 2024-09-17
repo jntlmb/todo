@@ -1,48 +1,53 @@
-import { ModalUIController } from "../ModalUIController";
+import { Todo } from "../Todo";
 import { TodoUIController } from "../TodoUIController";
 
-const modalUIController = new ModalUIController();
-const todoUIController = new TodoUIController();
-
-export function setupNavEventListener(todos) {
+export function setupNavEventListener(todos, modalUIController, todoUIController) {
     document.querySelectorAll(".nav-btn").forEach((element) => {
         const action = element.getAttribute("data-action");
 
         element.addEventListener("click", () => {
-            switch (action) {
-                case "add-todo":
-                    modalUIController.displayTodoModal();
-                    break;
-                case "my-todos":
-                    todoUIController.displayAllTodos(todos);
-                    setActive(element);
-                    break;
-                case "today":
-                    todoUIController.displayTodayTodos(todos);
-                    setActive(element);
-                    break;
-                case "upcoming":
-                    todoUIController.displayUpcomingTodos(todos);
-                    setActive(element);
-                    break;
-                case "anytime":
-                    todoUIController.displayAnytimeTodos(todos);
-                    setActive(element);
-                    break;
-                case "importance":
-                    todoUIController.displayImportanceTodos(todos);
-                    setActive(element);
-                    break;
-                case "add-project":
-                    console.log("add project btn pressed");
-                    break;
-                case "my-projects":
-                    console.log("my projects btn pressed");
-                    setActive(element);
-                    break;
-            }
+            handleNavAction(action, todos, modalUIController, todoUIController, element);
         });
     });
+}
+
+function handleNavAction(action, todos, modalUIController, todoUIController, element) {
+    const headings = document.querySelectorAll(".section-headings");
+
+    const updateHeadingAndDisplay = (headingText, displayFunction) => {
+        headings.forEach((heading) => {
+            heading.textContent = headingText;
+        });
+        displayFunction(todos); 
+        setActive(element);
+    };
+
+    switch (action) {
+        case "add-todo":
+            modalUIController.displayTodoModal(todos);
+            break;
+        case "my-todos":
+            updateHeadingAndDisplay("My Todos", (todos) => todoUIController.displayAllTodos(todos));
+            break;
+        case "today":
+            updateHeadingAndDisplay("Today", (todos) => todoUIController.displayTodayTodos(todos));
+            break;
+        case "upcoming":
+            updateHeadingAndDisplay("Upcoming", (todos) => todoUIController.displayUpcomingTodos(todos));
+            break;
+        case "anytime":
+            updateHeadingAndDisplay("Anytime", (todos) => todoUIController.displayAnytimeTodos(todos));
+            break;
+        case "importance":
+            updateHeadingAndDisplay("Importance", (todos) => todoUIController.displayImportanceTodos(todos));
+            break;
+        case "add-project":
+            console.log("add project btn pressed");
+            break;
+        case "my-projects":
+            updateHeadingAndDisplay("My Projects", () => console.log("my projects btn pressed"));
+            break;
+    }
 }
 
 function setActive(btn) {

@@ -35,7 +35,7 @@ export function createTodoElement(todo) {
     container.innerHTML = `
     <div class="flex gap-5">
         <div class="self-center">
-            <input type="checkbox"></input>
+            <input id="checkbox" type="checkbox"></input>
         </div>
         <div>
             <h1 class="text-xl">${todo.title}</h1>
@@ -45,6 +45,15 @@ export function createTodoElement(todo) {
     </div>
     <p><span class="inline-block h-full w-[5px] rounded-md ${importanceClass}"></span></p>
     `;
+
+    const checkbox = container.querySelector("#checkbox");
+    checkbox.addEventListener("change", (event) => {
+        if (event.target.checked) {
+            container.classList.add("line-through")
+        } else {
+            container.classList.remove("line-through")
+        }
+    });
 
     return container;
 }

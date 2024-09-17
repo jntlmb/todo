@@ -46,7 +46,6 @@ export class Todo {
         if (!importanceClasses.includes(newImportance)) {
             console.log("unavailable importance class");
         }
-
         this._importance = newImportance;
     }
 }

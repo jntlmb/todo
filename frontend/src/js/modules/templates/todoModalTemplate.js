@@ -13,7 +13,7 @@ export function createTodoModal() {
                         <i id="close-modal" class="text-2xl bi bi-x-square hover:opacity-75"></i>
                     </button>
                 </div>
-                <form action="">
+                <form id="todo-form" action="">
                     <fieldset class="flex flex-col gap-3">
                         <div class="flex flex-row">
                             <input
