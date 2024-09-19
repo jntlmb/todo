@@ -1,4 +1,4 @@
-import { createTodoElement } from "./templates/todoTemplate";
+import { createTodoElement } from "../components/todoTemplate";
 
 export class TodoUIController {
     constructor() {
@@ -53,17 +53,25 @@ export class TodoUIController {
             }
         });
 
+        const formattedToday = new Date(
+            this.today.replace(/-(\d)(?=-|$)/g, "-0$1")
+        );
+        const formattedWeekFromToday = new Date(
+            this.weekFromToday.replace(/-(\d)(?=-|$)/g, "-0$1")
+        );
+
         todosWithDate.forEach((todo) => {
-            const formattedToday = this.today.replace(/-(\d)(?=-|$)/g, "-0$1");
-            const formattedWeekFromToday = this.weekFromToday.replace(
-                /-(\d)(?=-|$)/g,
-                "-0$1"
+            const todoDueDate = new Date(
+                todo.dueDate.replace(/-(\d)(?=-|$)/g, "-0$1")
             );
 
+            console.log(`todo due date: ${todoDueDate}`);
+            console.log(`today date: ${formattedToday}`);
+            console.log(`week from today date: ${formattedWeekFromToday}`);
+
             if (
-                todo.dueDate === formattedToday &&
-                todo.dueDate >= formattedToday &&
-                todo.dueDate <= formattedWeekFromToday
+                todoDueDate >= formattedToday &&
+                todoDueDate <= formattedWeekFromToday
             ) {
                 const newTodo = createTodoElement(todo);
                 this.contentContainer.appendChild(newTodo);
@@ -85,14 +93,20 @@ export class TodoUIController {
     displayImportanceTodos(todos) {
         this.clearContentContainer();
 
-        const sortedTodos = todos.sort((a, b) => {
+        const todosCopy = [...todos];
+
+        const sortedTodos = todosCopy.sort((a, b) => {
             const importanceA = a.importance;
             const importanceB = b.importance;
             return importanceA - importanceB;
         });
 
         sortedTodos.forEach((todo) => {
-            if (todo.importance !== null) {
+            if (
+                todo.importance !== null &&
+                todo.importance !== undefined &&
+                !isNaN(todo.importance)
+            ) {
                 const newTodo = createTodoElement(todo);
                 this.contentContainer.appendChild(newTodo);
             }

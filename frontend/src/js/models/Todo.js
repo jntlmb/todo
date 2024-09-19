@@ -1,10 +1,16 @@
 export class Todo {
-    constructor({ title, description, dueDate = null, importance = null }) {
+    constructor({
+        title,
+        description,
+        dueDate = null,
+        importance = null,
+        isFinished = false
+    }) {
         this._title = title;
         this._description = description;
         this._dueDate = dueDate;
         this._importance = importance;
-        this._isFinished = false;
+        this._isFinished = isFinished;
     }
 
     get title() {
@@ -47,5 +53,13 @@ export class Todo {
             console.log("unavailable importance class");
         }
         this._importance = newImportance;
+    }
+
+    get isFinished() {
+        return this._isFinished;
+    }
+
+    set isFinished(updateIsFinished) {
+        this._isFinished = updateIsFinished;
     }
 }

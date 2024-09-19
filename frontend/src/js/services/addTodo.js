@@ -1,4 +1,4 @@
-import { Todo } from "./Todo";
+import { Todo } from "../models/Todo";
 
 export function addTodo(
     todos,

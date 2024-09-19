@@ -19,7 +19,6 @@ export function createTodoElement(todo) {
             break;
         default:
             importanceClass = "bg-gray-500";
-
     }
 
     container.classList.add(
@@ -29,13 +28,19 @@ export function createTodoElement(todo) {
         "border-gray-300",
         "mb-2",
         "flex",
-        "justify-between"
+        "justify-between",
+        "cursor-pointer",
+        "transition",
+        "duration-150",
+        "hover:bg-gray-200",
+        "hover:rounded-md",
+        "hover:border-gray-300"
     );
 
     container.innerHTML = `
     <div class="flex gap-5">
         <div class="self-center">
-            <input id="checkbox" type="checkbox"></input>
+            <input id="checkbox" type="checkbox" class="cursor-pointer"></input>
         </div>
         <div>
             <h1 class="text-xl">${todo.title}</h1>
@@ -47,13 +52,22 @@ export function createTodoElement(todo) {
     `;
 
     const checkbox = container.querySelector("#checkbox");
-    checkbox.addEventListener("change", (event) => {
-        if (event.target.checked) {
-            container.classList.add("line-through")
+    const updateTodoUI = () => {
+        if (todo.isFinished) {
+            container.classList.add("line-through");
+            checkbox.checked = true;
         } else {
-            container.classList.remove("line-through")
+            container.classList.remove("line-through");
+            checkbox.checked = false;
         }
+    };
+
+    checkbox.addEventListener("change", (e) => {
+        todo.isFinished = e.target.checked;
+        updateTodoUI();
     });
+
+    updateTodoUI();
 
     return container;
 }

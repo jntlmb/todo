@@ -1,8 +1,8 @@
-import { addTodo } from "../addTodo";
-import { ModalUIController } from "../ModalUIController";
-import { TodoUIController } from "../TodoUIController"; // Import TodoUIController
+import { addTodo } from "./addTodo";
+import { ModalUIController } from "../controllers/ModalUIController";
+import { TodoUIController } from "../controllers/TodoUIController";
 
-export function setupModalEventListener(todos) {
+export function setupAddTodoModalEventListener(todos) {
     const modalContainer = document.getElementById("modal-container");
     const modalCloseBtn = document.getElementById("close-modal");
     const addBtn = document.getElementById("add-button");
@@ -36,10 +36,10 @@ export function setupModalEventListener(todos) {
                 );
 
                 // Clear the form fields
-                todoTitle.value = '';
-                todoDescription.value = '';
-                todoDueDate.value = '';
-                todoImportance.value = '';
+                todoTitle.value = "";
+                todoDescription.value = "";
+                todoDueDate.value = "";
+                todoImportance.value = "";
 
                 // Refresh the displayed todos
                 todoUIController.displayAllTodos(todos);
@@ -47,6 +47,18 @@ export function setupModalEventListener(todos) {
                 // Close the modal
                 modalUIController.hideTodoModal(); // Close the modal after adding the todo
             }
+        });
+    }
+}
+
+export function setupDetailsTodoModalEventListener() {
+    const modalContainer = document.getElementById("modal-container");
+    const modalCloseBtn = document.getElementById("close-modal");
+
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener("click", () => {
+            modalContainer.innerHTML = "";
+            modalContainer.classList.add("hidden");
         });
     }
 }

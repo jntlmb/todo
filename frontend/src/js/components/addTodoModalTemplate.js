@@ -1,9 +1,8 @@
-export function createTodoModal() {
+export function createAddTodoModal() {
     const modalContainer = document.getElementById("modal-container");
 
     modalContainer.innerHTML = `
         <div
-            id="add-todo-modal"
             class="fixed inset-0 flex items-center justify-center p-5 bg-gray-800 bg-opacity-75"
         >
             <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
