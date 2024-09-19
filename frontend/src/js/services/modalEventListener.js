@@ -3,18 +3,11 @@ import { ModalUIController } from "../controllers/ModalUIController";
 import { TodoUIController } from "../controllers/TodoUIController";
 
 export function setupAddTodoModalEventListener(todos) {
-    const modalContainer = document.getElementById("modal-container");
-    const modalCloseBtn = document.getElementById("close-modal");
     const addBtn = document.getElementById("add-button");
-    const modalUIController = new ModalUIController(); // Create an instance
-    const todoUIController = new TodoUIController(); // Create an instance
+    const modalUIController = new ModalUIController();
+    const todoUIController = new TodoUIController();
 
-    if (modalCloseBtn) {
-        modalCloseBtn.addEventListener("click", () => {
-            modalContainer.innerHTML = "";
-            modalContainer.classList.add("hidden");
-        });
-    }
+    setupModalClose(modalUIController);
 
     const form = document.querySelector("#todo-form");
     const todoTitle = document.querySelector("#todo-title");
@@ -35,30 +28,53 @@ export function setupAddTodoModalEventListener(todos) {
                     todoImportance.value
                 );
 
-                // Clear the form fields
                 todoTitle.value = "";
                 todoDescription.value = "";
                 todoDueDate.value = "";
                 todoImportance.value = "";
 
-                // Refresh the displayed todos
                 todoUIController.displayAllTodos(todos);
 
-                // Close the modal
-                modalUIController.hideTodoModal(); // Close the modal after adding the todo
+                modalUIController.hideModal();
             }
         });
     }
 }
 
 export function setupDetailsTodoModalEventListener() {
+    const deleteTodoBtn = document.getElementById("delete-button");
+    const editTodoBtn = document.getElementById("edit-button");
+    const modalUIController = new ModalUIController();
+
+    setupModalClose(modalUIController);
+
+    if (deleteTodoBtn) {
+        deleteTodoBtn.addEventListener("click", () => {
+            console.log("delete todo...");
+        });
+    }
+
+    if (editTodoBtn) {
+        editTodoBtn.addEventListener("click", () => {
+            console.log("add todo...");
+        });
+    }
+}
+
+function setupModalClose(modalUIController) {
     const modalContainer = document.getElementById("modal-container");
     const modalCloseBtn = document.getElementById("close-modal");
 
     if (modalCloseBtn) {
         modalCloseBtn.addEventListener("click", () => {
             modalContainer.innerHTML = "";
-            modalContainer.classList.add("hidden");
+            modalUIController.hideModal();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                modalUIController.hideModal();
+            }
         });
     }
 }

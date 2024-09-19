@@ -19,5 +19,5 @@ export function addTodo(
         importance: importanceMap[todoImportance] || null
     });
 
-    todos.push(newTodo);
+    todos.unshift(newTodo);
 }

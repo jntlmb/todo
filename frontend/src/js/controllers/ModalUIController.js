@@ -1,6 +1,9 @@
 import { createAddTodoModal } from "../components/addTodoModalTemplate";
 import { createDetailsTodoModal } from "../components/detailsTodoModalTemplate";
-import { setupAddTodoModalEventListener } from "../services/modalEventListener";
+import {
+    setupAddTodoModalEventListener,
+    setupDetailsTodoModalEventListener
+} from "../services/modalEventListener";
 
 export class ModalUIController {
     constructor() {
@@ -14,11 +17,12 @@ export class ModalUIController {
     }
 
     displayDetailsTodoModal(todo) {
-        createDetailsTodoModal();
+        createDetailsTodoModal(todo);
         this.modalContainer.classList.remove("hidden");
+        setupDetailsTodoModalEventListener();
     }
 
-    hideTodoModal() {
+    hideModal() {
         this.modalContainer.classList.add("hidden");
     }
 

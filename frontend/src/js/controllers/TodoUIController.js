@@ -24,18 +24,18 @@ export class TodoUIController {
 
     displayTodayTodos(todos) {
         this.clearContentContainer();
-        let todosWithDate = [];
+        let todosWithDate = todos.filter((todo) => todo.dueDate);
 
-        todos.forEach((todo) => {
-            if (todo.dueDate) {
-                todosWithDate.push(todo);
-            }
-        });
+        const formattedToday = new Date(this.today);
 
         todosWithDate.forEach((todo) => {
-            const formattedToday = this.today.replace(/-(\d)(?=-|$)/g, "-0$1");
+            const todoDueDate = new Date(todo.dueDate);
 
-            if (todo.dueDate === formattedToday) {
+            if (
+                todoDueDate.getFullYear() === formattedToday.getFullYear() &&
+                todoDueDate.getMonth() === formattedToday.getMonth() &&
+                todoDueDate.getDate() === formattedToday.getDate()
+            ) {
                 const newTodo = createTodoElement(todo);
                 this.contentContainer.appendChild(newTodo);
             }
@@ -45,29 +45,17 @@ export class TodoUIController {
     displayUpcomingTodos(todos) {
         this.clearContentContainer();
 
-        let todosWithDate = [];
+        let todosWithDate = todos.filter((todo) => todo.dueDate);
 
-        todos.forEach((todo) => {
-            if (todo.dueDate) {
-                todosWithDate.push(todo);
-            }
+        todosWithDate.sort((a, b) => {
+            return new Date(a.dueDate) - new Date(b.dueDate);
         });
 
-        const formattedToday = new Date(
-            this.today.replace(/-(\d)(?=-|$)/g, "-0$1")
-        );
-        const formattedWeekFromToday = new Date(
-            this.weekFromToday.replace(/-(\d)(?=-|$)/g, "-0$1")
-        );
+        const formattedToday = new Date(this.today);
+        const formattedWeekFromToday = new Date(this.weekFromToday);
 
         todosWithDate.forEach((todo) => {
-            const todoDueDate = new Date(
-                todo.dueDate.replace(/-(\d)(?=-|$)/g, "-0$1")
-            );
-
-            console.log(`todo due date: ${todoDueDate}`);
-            console.log(`today date: ${formattedToday}`);
-            console.log(`week from today date: ${formattedWeekFromToday}`);
+            const todoDueDate = new Date(todo.dueDate);
 
             if (
                 todoDueDate >= formattedToday &&

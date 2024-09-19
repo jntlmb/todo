@@ -1,3 +1,5 @@
+import { ModalUIController } from "../controllers/ModalUIController";
+
 export function createTodoElement(todo) {
     const container = document.createElement("div");
 
@@ -43,8 +45,8 @@ export function createTodoElement(todo) {
             <input id="checkbox" type="checkbox" class="cursor-pointer"></input>
         </div>
         <div>
-            <h1 class="text-xl">${todo.title}</h1>
-            <p>${todo.description}</p>
+            <h1 class="text-xl overflow-hidden">${todo.title}</h1>
+            <p class="overflow-hidden">${todo.description}</p>
             <p>${dueDate}</p>
         </div>
     </div>
@@ -65,6 +67,15 @@ export function createTodoElement(todo) {
     checkbox.addEventListener("change", (e) => {
         todo.isFinished = e.target.checked;
         updateTodoUI();
+    });
+
+    checkbox.addEventListener("click", (e) => {
+        e.stopPropagation();
+    });
+
+    container.addEventListener("click", () => {
+        const modalUIController = new ModalUIController();
+        modalUIController.displayDetailsTodoModal(todo);
     });
 
     updateTodoUI();
