@@ -26,7 +26,5 @@ export class ModalUIController {
         this.modalContainer.classList.add("hidden");
     }
 
-    displayProjectModal() {
-        // Noch umzusetzende Logik
-    }
+    displayProjectModal() {}
 }
