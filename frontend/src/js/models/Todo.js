@@ -41,7 +41,9 @@ export class Todo {
         return this._dueDate;
     }
 
-    set dueDate(newDueDate) {}
+    set dueDate(newDueDate) {
+        this._dueDate = newDueDate; // Update the internal property
+    }
 
     get importance() {
         return this._importance;

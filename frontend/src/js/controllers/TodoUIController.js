@@ -17,7 +17,7 @@ export class TodoUIController {
         this.clearContentContainer();
 
         todos.forEach((todo) => {
-            const newTodo = createTodoElement(todo);
+            const newTodo = createTodoElement(todo, todos);
             this.contentContainer.appendChild(newTodo);
         });
     }
@@ -36,7 +36,7 @@ export class TodoUIController {
                 todoDueDate.getMonth() === formattedToday.getMonth() &&
                 todoDueDate.getDate() === formattedToday.getDate()
             ) {
-                const newTodo = createTodoElement(todo);
+                const newTodo = createTodoElement(todo, todos);
                 this.contentContainer.appendChild(newTodo);
             }
         });
@@ -61,7 +61,7 @@ export class TodoUIController {
                 todoDueDate >= formattedToday &&
                 todoDueDate <= formattedWeekFromToday
             ) {
-                const newTodo = createTodoElement(todo);
+                const newTodo = createTodoElement(todo, todos);
                 this.contentContainer.appendChild(newTodo);
             }
         });
@@ -72,7 +72,7 @@ export class TodoUIController {
 
         todos.forEach((todo) => {
             if (!todo.dueDate) {
-                const newTodo = createTodoElement(todo);
+                const newTodo = createTodoElement(todo, todos);
                 this.contentContainer.appendChild(newTodo);
             }
         });
@@ -95,7 +95,7 @@ export class TodoUIController {
                 todo.importance !== undefined &&
                 !isNaN(todo.importance)
             ) {
-                const newTodo = createTodoElement(todo);
+                const newTodo = createTodoElement(todo, todos);
                 this.contentContainer.appendChild(newTodo);
             }
         });

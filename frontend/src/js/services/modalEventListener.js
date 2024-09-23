@@ -41,24 +41,67 @@ export function setupAddTodoModalEventListener(todos) {
     }
 }
 
-export function setupDetailsTodoModalEventListener() {
+export function setupDetailsTodoModalEventListener(todo, todos) {
     const deleteTodoBtn = document.getElementById("delete-button");
     const editTodoBtn = document.getElementById("edit-button");
     const modalUIController = new ModalUIController();
+    const todoUIController = new TodoUIController();
 
     setupModalClose(modalUIController);
 
     if (deleteTodoBtn) {
         deleteTodoBtn.addEventListener("click", () => {
-            console.log("delete todo...");
+            const index = todos.indexOf(todo);
+            if (index > -1) {
+                todos.splice(index, 1); // Remove the todo from the array
+                todoUIController.displayAllTodos(todos); // Update the UI
+                modalUIController.hideModal(); // Close the modal
+            }
         });
     }
 
     if (editTodoBtn) {
         editTodoBtn.addEventListener("click", () => {
-            console.log("add todo...");
+            modalUIController.displayEditTodoModal(todo, todos);
         });
     }
+}
+
+export function setupEditTodoModalEventListener(todo, todos) {
+    const modalUIController = new ModalUIController();
+    const todoUIController = new TodoUIController();
+
+    // Close modal functionality
+    document.getElementById("close-modal").addEventListener("click", () => {
+        modalUIController.hideModal();
+    });
+
+    const form = document.getElementById("edit-todo-form");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault(); 
+
+        const updatedTitle = document.getElementById("edit-todo-title").value;
+        const updatedDescription = document.getElementById("edit-todo-description").value;
+        const updatedDueDate = document.getElementById("edit-todo-due-date").value;
+        const updatedImportance = document.getElementById("edit-todo-importance").value;
+
+        todo.title = updatedTitle;
+        todo.description = updatedDescription;
+        todo.dueDate = updatedDueDate;
+        todo.importance = getImportanceValue(updatedImportance); 
+
+        todoUIController.displayAllTodos(todos);
+        modalUIController.hideModal(); 
+    });
+}
+
+function getImportanceValue(importanceLabel) {
+    const importanceMap = {
+        high: "1",
+        medium: "2",
+        low: "3"
+    };
+    return importanceMap[importanceLabel] || null; 
 }
 
 function setupModalClose(modalUIController) {
@@ -78,3 +121,4 @@ function setupModalClose(modalUIController) {
         });
     }
 }
+

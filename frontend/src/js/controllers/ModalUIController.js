@@ -1,8 +1,10 @@
 import { createAddTodoModal } from "../components/addTodoModalTemplate";
 import { createDetailsTodoModal } from "../components/detailsTodoModalTemplate";
+import { createEditTodoModal } from "../components/editTodoModalTemplate";
 import {
     setupAddTodoModalEventListener,
-    setupDetailsTodoModalEventListener
+    setupDetailsTodoModalEventListener,
+    setupEditTodoModalEventListener,
 } from "../services/modalEventListener";
 
 export class ModalUIController {
@@ -16,10 +18,16 @@ export class ModalUIController {
         setupAddTodoModalEventListener(todos);
     }
 
-    displayDetailsTodoModal(todo) {
+    displayDetailsTodoModal(todo, todos) {
         createDetailsTodoModal(todo);
         this.modalContainer.classList.remove("hidden");
-        setupDetailsTodoModalEventListener();
+        setupDetailsTodoModalEventListener(todo, todos);
+    }
+
+    displayEditTodoModal(todo, todos) {
+        createEditTodoModal(todo);
+        this.modalContainer.classList.remove("hidden");
+        setupEditTodoModalEventListener(todo, todos);
     }
 
     hideModal() {

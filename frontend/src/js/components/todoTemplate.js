@@ -1,6 +1,6 @@
 import { ModalUIController } from "../controllers/ModalUIController";
 
-export function createTodoElement(todo) {
+export function createTodoElement(todo, todos) {
     const container = document.createElement("div");
 
     let dueDate = todo.dueDate;
@@ -54,6 +54,7 @@ export function createTodoElement(todo) {
     `;
 
     const checkbox = container.querySelector("#checkbox");
+
     const updateTodoUI = () => {
         if (todo.isFinished) {
             container.classList.add("line-through");
@@ -75,7 +76,7 @@ export function createTodoElement(todo) {
 
     container.addEventListener("click", () => {
         const modalUIController = new ModalUIController();
-        modalUIController.displayDetailsTodoModal(todo);
+        modalUIController.displayDetailsTodoModal(todo, todos);
     });
 
     updateTodoUI();
