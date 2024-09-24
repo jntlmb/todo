@@ -1,6 +1,7 @@
 import { addTodo } from "./addTodo";
 import { ModalUIController } from "../controllers/ModalUIController";
 import { TodoUIController } from "../controllers/TodoUIController";
+import { saveTodos } from "./localStorageHandler"; 
 
 export function setupAddTodoModalEventListener(todos) {
     const addBtn = document.getElementById("add-button");
@@ -20,7 +21,7 @@ export function setupAddTodoModalEventListener(todos) {
             e.preventDefault();
 
             if (todoTitle.value && todoDescription.value) {
-                addTodo(
+                const newTodo = addTodo(
                     todos,
                     todoTitle.value,
                     todoDescription.value,
@@ -34,7 +35,6 @@ export function setupAddTodoModalEventListener(todos) {
                 todoImportance.value = "";
 
                 todoUIController.displayAllTodos(todos);
-
                 modalUIController.hideModal();
             }
         });
@@ -53,9 +53,10 @@ export function setupDetailsTodoModalEventListener(todo, todos) {
         deleteTodoBtn.addEventListener("click", () => {
             const index = todos.indexOf(todo);
             if (index > -1) {
-                todos.splice(index, 1); // Remove the todo from the array
-                todoUIController.displayAllTodos(todos); // Update the UI
-                modalUIController.hideModal(); // Close the modal
+                todos.splice(index, 1); 
+                saveTodos(todos); 
+                todoUIController.displayAllTodos(todos); 
+                modalUIController.hideModal(); 
             }
         });
     }
@@ -71,7 +72,6 @@ export function setupEditTodoModalEventListener(todo, todos) {
     const modalUIController = new ModalUIController();
     const todoUIController = new TodoUIController();
 
-    // Close modal functionality
     document.getElementById("close-modal").addEventListener("click", () => {
         modalUIController.hideModal();
     });
@@ -90,6 +90,7 @@ export function setupEditTodoModalEventListener(todo, todos) {
         todo.dueDate = updatedDueDate;
         todo.importance = getImportanceValue(updatedImportance); 
 
+        saveTodos(todos); 
         todoUIController.displayAllTodos(todos);
         modalUIController.hideModal(); 
     });

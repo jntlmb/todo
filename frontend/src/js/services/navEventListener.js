@@ -1,6 +1,3 @@
-import { Todo } from "../models/Todo";
-import { TodoUIController } from "../controllers/TodoUIController";
-
 export function setupNavEventListener(
     todos,
     modalUIController,
@@ -71,7 +68,7 @@ function handleNavAction(
             console.log("add project btn pressed");
             break;
         case "my-projects":
-            updateHeadingAndDisplay("My Projects", () =>
+            updateHeadingAndDisplay("/// under construction ///", () =>
                 console.log("my projects btn pressed")
             );
             break;

@@ -1,4 +1,5 @@
 import { Todo } from "../models/Todo";
+import { saveTodos } from "./localStorageHandler";
 
 export function addTodo(
     todos,
@@ -20,4 +21,6 @@ export function addTodo(
     });
 
     todos.unshift(newTodo);
+    saveTodos(todos); 
+    return newTodo; 
 }
